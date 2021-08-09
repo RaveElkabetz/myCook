@@ -1,0 +1,22 @@
+{
+  "name": "mycook",
+  "version": "1.0.0",
+  "description": "An app for storing and sharing you favorite cooks",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaveElkabetz/myCook.git"
+  },
+  "author": "Raveh Elkabetz, Omer Gez, Lior Gandin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RaveElkabetz/myCook/issues"
+  },
+  "homepage": "https://github.com/RaveElkabetz/myCook#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
