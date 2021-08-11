@@ -15,6 +15,18 @@ exports.checkId = (req, res, next, val) => {
   next();
 };
 
+exports.checkBody = (req, res, next) => {
+  //console.log(`cook id is ${val}`);
+
+  if (req.body.cook_name.length === 0 || req.body.outer_link === null) {
+    return res.status(400).json({
+      status: "failed",
+      message: "Missing cook Name or Outer link",
+    });
+  }
+  next();
+};
+
 exports.createNewCook = (req, res) => {
   //console.log(req.body);
   const newId = cooks[cooks.length - 1].id + 1;
