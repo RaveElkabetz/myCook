@@ -1,8 +1,10 @@
 const fs = require("fs");
+const Cook = require("./../models/cookModel");
 
 const cooks = JSON.parse(
   fs.readFileSync(`${__dirname}/../data/mock-data/MOCK_DATA_RECIPES.json`)
 );
+
 exports.checkId = (req, res, next, val) => {
   console.log(`cook id is ${val}`);
 
