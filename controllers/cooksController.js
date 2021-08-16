@@ -19,30 +19,46 @@ exports.createNewCook = async (req, res) => {
   } catch (err) {
     res.status(400).json({
       status: "failed",
-      message: err,
+      message: err.message,
     });
   }
   // const newCook = new Cook({});
   // newCook.save();
 };
-exports.getAllCooks = (req, res) => {
-  //the version is for branching out from the current version from the current version without braking v1 for others that use v1
-  res.status(200).json({
-    status: "success",
-    // results: cooks.length,
-    // data: {
-    //   cooks,
-  });
+exports.getAllCooks = async (req, res) => {
+  try {
+    const cooks = await Cook.find();
+    res.status(200).json({
+      status: "success",
+      results: cooks.length,
+      data: {
+        cooks,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "failed",
+      message: err.message,
+    });
+  }
 };
 
-exports.getCookById = (req, res) => {
-  console.log(req.params);
-  //const id = req.params.id * 1;
-  //const cook = cooks.find((el) => el.id === id);
-  res.status(200).json({
-    status: "success",
-    data: {
-      cook,
-    },
-  });
+exports.getCookById = async (req, res) => {
+  try {
+    const cook = await Cook.findById(req.params.id);
+    //findById is mongoose helper method to replace the regular query of mongo:
+    // Cook.findOne({ _id: req.params.id })
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        cook,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "failed",
+      message: err.message,
+    });
+  }
 };

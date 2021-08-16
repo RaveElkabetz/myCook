@@ -14,6 +14,7 @@ if (process.env.NODE_ENV === "development") {
 app.use(express.json());
 
 // ROUTES
+//the version is for branching out from the current version from the current version without braking v1 for others that use v1
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/cooks", cooksRouter);
 
