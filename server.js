@@ -18,6 +18,13 @@ mongoose
     console.log("db connected!");
   });
 
+  app.get("/", (req, res) => {
+    res.json({ message: "Welcome to our application." });
+  });
+  
+  // routes
+  require("./app/routes/usersRoutes")(app);
+
 //START THE SERVER
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
