@@ -1,68 +1,65 @@
 <template>
-  <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title> My Recipes By Categories: </ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <h2>Here will be the grid</h2>
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-item>first category</ion-item>
-          </ion-col>
-
-          <ion-col>
-            <ion-item>second category</ion-item>
-          </ion-col>
-        </ion-row>
-
-        <ion-row>
-          <ion-col>
-            <ion-item>first category</ion-item>
-          </ion-col>
-
-          <ion-col>
-            <ion-item>second category</ion-item>
-          </ion-col>
-        </ion-row>
-
-        <ion-row>
-          <ion-col>
-            <ion-item>first category</ion-item>
-          </ion-col>
-
-          <ion-col>
-            <ion-item>second category</ion-item>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-content>
-  </ion-page>
+  <base-layout page-title="קטגוריות">
+    <ion-list>
+      <ion-item
+        dir="rtl"
+        v-for="category in categories"
+        :router-link="`/categories/ ${category.id}`"
+        :key="category.id"
+      >
+        <ion-thumbnail slot="start">
+          <ion-img :src="category.imageLink" :alt="category.title"></ion-img>
+        </ion-thumbnail>
+      </ion-item>
+    </ion-list>
+  </base-layout>
 </template>
 
 <script>
-import {
-  IonPage,
-  IonGrid,
-  IonToolbar,
-  IonHeader,
-  IonTitle,
-  IonItem,
-  IonCol,
-  IonRow,
-} from "@ionic/vue";
+import { IonList, IonItem, IonThumbnail, IonImg } from "@ionic/vue";
+
 export default {
   components: {
-    IonPage,
-    IonGrid,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
+    IonList,
     IonItem,
-    IonCol,
-    IonRow,
+    IonThumbnail,
+    IonImg,
+  },
+  data() {
+    return {
+      categories: [
+        {
+          id: "c1",
+          imageLink: "../assets/imgs/pan-cooking.png",
+          title: "תבשילי קדרה",
+        },
+        {
+          id: "c2",
+          imageLink: "../assets/imgs/cake.png",
+          title: "עוגות",
+        },
+        {
+          id: "c3",
+          imageLink: "../assets/imgs/rice.png",
+          title: "תוספות",
+        },
+        {
+          id: "c4",
+          imageLink: "../assets/imgs/cupcake.png",
+          title: "קינוחים",
+        },
+        {
+          id: "c5",
+          imageLink: "../assets/imgs/chicken.png",
+          title: "בשר ועוף",
+        },
+        {
+          id: "c6",
+          imageLink: "../assets/imgs/green-salad.png",
+          title: "סלטים",
+        },
+      ],
+    };
   },
 };
 </script>
