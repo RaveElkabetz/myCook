@@ -1,4 +1,6 @@
 const db = require("../models");
+const config = require("../config/auth.config");
+
 const User = db.user;
 
 var jwt = require("jsonwebtoken");
@@ -44,10 +46,10 @@ exports.signin = (req, res) => {
           message: "Invalid Password!"
         });
       }
-
-      var token = jwt.sign({ id: user.id });
-
-      var authorities = [];
+      
+      var token = jwt.sign({ id: user.id }, config.secret, {
+        expiresIn: 86400 // 24 hours
+      });
 
       res.status(200).send({
         id: user._id,

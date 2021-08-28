@@ -1,4 +1,4 @@
-const Cook = require("./../models/cookModel");
+const Cook = require("../models/cookModel");
 
 // const cooks = JSON.parse(
 //   fs.readFileSync(`${__dirname}/../data/mock-data/MOCK_DATA_RECIPES.json`)

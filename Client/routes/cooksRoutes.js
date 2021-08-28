@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 const express = require("express");
-const cooksController = require("./../controllers/cooksController");
+const cooksController = require("../controllers/cooksController");
 
 const router = express.Router();
 
