@@ -10,6 +10,7 @@
         <ion-thumbnail slot="start">
           <ion-img :src="category.imageLink" :alt="category.title"></ion-img>
         </ion-thumbnail>
+        {{ category.title }}
       </ion-item>
     </ion-list>
   </base-layout>
@@ -30,32 +31,38 @@ export default {
       categories: [
         {
           id: "c1",
-          imageLink: "../assets/imgs/pan-cooking.png",
+          imageLink:
+            "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/emojipedia/132/shallow-pan-of-food_1f958.png",
           title: "תבשילי קדרה",
         },
         {
           id: "c2",
-          imageLink: "../assets/imgs/cake.png",
-          title: "עוגות",
+          imageLink:
+            "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/emojipedia/132/pretzel_1f968.png",
+          title: "מאפים",
         },
         {
           id: "c3",
-          imageLink: "../assets/imgs/rice.png",
-          title: "תוספות",
+          imageLink:
+            "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/emojipedia/132/takeout-box_1f961.png",
+          title: "אוכל אסייתי",
         },
         {
           id: "c4",
-          imageLink: "../assets/imgs/cupcake.png",
+          imageLink:
+            "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/emojipedia/132/cupcake_1f9c1.png",
           title: "קינוחים",
         },
         {
           id: "c5",
-          imageLink: "../assets/imgs/chicken.png",
+          imageLink:
+            "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/emojipedia/132/cut-of-meat_1f969.png",
           title: "בשר ועוף",
         },
         {
           id: "c6",
-          imageLink: "../assets/imgs/green-salad.png",
+          imageLink:
+            "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/emojipedia/132/green-salad_1f957.png",
           title: "סלטים",
         },
       ],
