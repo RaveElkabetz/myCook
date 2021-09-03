@@ -12,7 +12,7 @@ const routes = [
   },
   {
     path: "/categories/:id",
-    component: () => import("../pages//RecepiesCategoryPage.vue"),
+    component: () => import("../pages/RecepiesCategoryPage.vue"),
   },
 ];
 
