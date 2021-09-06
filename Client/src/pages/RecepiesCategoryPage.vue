@@ -3,16 +3,13 @@
     :page-title="loadedCategory ? loadedCategory.title : 'loading...'"
     PageDefaultBackLink="/categories"
   >
-    <ion-list>
-      <ion-item>מתכון 1</ion-item>
-      <ion-item>מתכון 2</ion-item>
-      <ion-item>מתכון 3</ion-item>
-    </ion-list>
+    <!---here will come the cooksList component--->
+    <cooks-list></cooks-list>
   </base-layout>
 </template>
 
 <script>
-import { IonList, IonItem } from "@ionic/vue";
+import CooksList from "../.././components/cooks/CooksList.vue";
 export default {
   props: ["catedoryName"],
   data() {
@@ -26,15 +23,13 @@ export default {
       return this.$store.getters.category(this.categoryId);
     },
   },
-  watch: {
-    $route(currentRoute) {
-      this.categoryId = currentRoute.params.id;
-    },
-  },
+  // watch: {
+  //   $route(currentRoute) {
+  //     this.categoryId = currentRoute.params.id;
+  //   },
 
   components: {
-    IonList,
-    IonItem,
+    CooksList,
   },
 };
 </script>

@@ -40,6 +40,27 @@ const store = createStore({
           title: "סלטים",
         },
       ],
+      cooks: [
+        {
+          cookName: "אורז",
+          fullRecipeDesc: "לבשל את האורז עם המים והמלח למשך 20 דק",
+          userAddedEmail: "test@test.com",
+          category: "3",
+          imageLink:
+            "https://hips.hearstapps.com/vidthumb/images/delish-u-rice-2-1529079587.jpg",
+          ingredients: ["אורז", "מים", "מלח"],
+        },
+        {
+          cookName: "סטייק",
+          fullRecipeDesc:
+            "לוקחים את נתחי האנטריקוט, מתבלים במלח ופלפל ושמים על המנגל כ3 דק",
+          userAddedEmail: "test@test.com",
+          category: "5",
+          imageLink:
+            "https://images1.calcalist.co.il/PicServer2/20122005/61916/meat-bar002095126_l.jpg",
+          ingredients: ["נתחי אנטריקוט", "מלחr", "פלפל שחור גרוס"],
+        },
+      ],
     };
   },
   getters: {
@@ -69,6 +90,26 @@ const store = createStore({
 
         return i;
       };
+    },
+    cooks(state) {
+      return state.cooks;
+    },
+    cook(state) {
+      return (categoryId) => {
+        console.log("enterd getter of cook by category");
+
+        var cooksByCategory = [];
+        for (let i = state.cooks.length; i < state.cooks.length; i++) {
+          const cook = state.cooks[i];
+          if (categoryId === undefined) continue;
+          if (cook.category === categoryId.trim()) {
+            cooksByCategory.push(cook);
+          }
+        }
+        return cooksByCategory;
+      };
+
+      //להמשיך מכאן
     },
   },
 });
