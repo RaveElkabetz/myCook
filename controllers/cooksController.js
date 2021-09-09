@@ -62,3 +62,57 @@ exports.getCookById = async (req, res) => {
     });
   }
 };
+
+exports.updateCook = async (req, res) => {
+  try {
+    const data = await Cook.updateOne({cook_name : req.body.cook_name}, req.body);
+    if (data.nModified != 0)
+    {
+      res.status(200).json({
+        status: "success",
+        data: data
+      });
+    }
+    else 
+    {
+      res.status(400).json({
+        status: "failed",
+        message: "no such cook"
+      });
+    }
+  } catch (err) {
+    res.status(400).json({
+      status: "failed",
+      message: err.message,
+    });
+  }
+
+}
+
+exports.deleteCook = async (req, res) => {
+
+  try {
+    const deleteCook = await Cook.findOneAndDelete({cook_name : req.body.cook_name});
+    if (deleteCook != null)
+    {
+      res.status(200).json({
+        status: "success",
+        data: {
+          cook: deleteCook,
+        },
+      });
+    }
+    else
+    {
+      res.status(400).json({
+        status: "failed",
+        message: "no such cook"
+      });
+    }
+  } catch (err) {
+    res.status(400).json({
+      status: "failed",
+      message: err.message,
+    });
+  }
+}
