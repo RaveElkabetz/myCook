@@ -1,19 +1,29 @@
 <template>
   <ion-list>
-    <cooks-list-item v-for="cook in cooks" :key="cook.id" :cook="cook">
-    </cooks-list-item>
+    <cooks-list-item v-for="c in cook" :key="c.id" :cook="c"> </cooks-list-item>
   </ion-list>
-  <h1>test</h1>
 </template>
 
 <script>
 import { IonList } from "@ionic/vue";
 import CooksListItem from "./CooksListItem.vue";
+
 export default {
   props: ["cooks"],
   components: {
     IonList,
     CooksListItem,
+  },
+  data() {
+    return {
+      categoryId: this.$route.params.id,
+    };
+  },
+
+  computed: {
+    cook() {
+      return this.$store.getters.cooksByCategory(this.categoryId);
+    },
   },
 };
 </script>

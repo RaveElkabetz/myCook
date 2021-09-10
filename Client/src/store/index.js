@@ -43,6 +43,7 @@ const store = createStore({
       cooks: [
         {
           cookName: "אורז",
+          id: "1",
           fullRecipeDesc: "לבשל את האורז עם המים והמלח למשך 20 דק",
           userAddedEmail: "test@test.com",
           category: "3",
@@ -52,6 +53,7 @@ const store = createStore({
         },
         {
           cookName: "סטייק",
+          id: "2",
           fullRecipeDesc:
             "לוקחים את נתחי האנטריקוט, מתבלים במלח ופלפל ושמים על המנגל כ3 דק",
           userAddedEmail: "test@test.com",
@@ -94,22 +96,39 @@ const store = createStore({
     cooks(state) {
       return state.cooks;
     },
-    cook(state) {
+    cooksByCategory(state) {
       return (categoryId) => {
         console.log("enterd getter of cook by category");
-
-        var cooksByCategory = [];
-        for (let i = state.cooks.length; i < state.cooks.length; i++) {
+        console.log(categoryId);
+        //debugger;
+        var cooksByCategoryRet = [];
+        for (let i = 0; i < state.cooks.length; i++) {
           const cook = state.cooks[i];
           if (categoryId === undefined) continue;
-          if (cook.category === categoryId.trim()) {
-            cooksByCategory.push(cook);
+          if (cook.category.trim() === categoryId.trim()) {
+            cooksByCategoryRet.push(cook);
           }
         }
-        return cooksByCategory;
+        console.log(cooksByCategoryRet);
+        return cooksByCategoryRet;
       };
 
       //להמשיך מכאן
+      //use this function on the cooksList page
+    },
+    cook(state) {
+      return (cookId) => {
+        console.log("enterd getter of cook by category");
+        console.log(state);
+        console.log(cookId);
+        for (let i = 0; i < state.cooks.length; i++) {
+          const cook = state.cooks[i];
+          if (cookId === undefined) continue;
+          if (cook.id.trim() === cookId.trim()) {
+            return cook;
+          }
+        }
+      };
     },
   },
 });

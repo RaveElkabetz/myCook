@@ -1,10 +1,10 @@
 <template>
-  <ion-item dir="rtl" :router-link="`/categories/ ${cook.id}`">
+  <ion-item dir="rtl" :router-link="`/cookPage/ ${cook.id}`">
     <ion-thumbnail slot="start">
-      <ion-img :src="cook.imageLink" :alt="cook.title"></ion-img>
+      <ion-img :src="cook.imageLink" :alt="cook.cookName"></ion-img>
     </ion-thumbnail>
     <ion-label>
-      {{ cook.title }}
+      {{ cook.cookName }}
     </ion-label>
   </ion-item>
 </template>

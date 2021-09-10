@@ -7,3 +7,8 @@ ion-content {
   font-family: Varela;
   font-size: 1.1em;
 }
+
+ion-fab-button {
+  --background: var(--ion-color-tertiary);
+  color: var(--ion-color-tertiary-contrast);
+}
