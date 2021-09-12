@@ -83,7 +83,13 @@ exports.getCookByUser = async (req, res) => {
 };
 exports.getAllCooksByUser = async (req, res) => {
   try {
-    const cook = await Cook.find({email: req.body.email});
+
+    const user = await fetch("/api/test/user", {
+      method: 'get',
+      headers: {'x-access-token': req.body.token}
+    });
+    const useremail = user.email 
+    const cook = await Cook.find({email: useremail});
 
     res.status(200).json({
       status: "success",
@@ -100,7 +106,7 @@ exports.getAllCooksByUser = async (req, res) => {
 };
 exports.getCookByCategory = async (req, res) => {
   try {
-    const cook = await Cook.findMany({category: req.body.cayrgory});
+    const cook = await Cook.find({category: req.body.cayrgory});
 
     res.status(200).json({
       status: "success",
@@ -127,13 +133,13 @@ exports.updateCook = async (req, res) => {
     }
     else 
     {
-      res.status(400).json({
+      res.status(404).json({
         status: "failed",
         message: "no such cook"
       });
     }
   } catch (err) {
-    res.status(400).json({
+    res.status(404).json({
       status: "failed",
       message: err.message,
     });
@@ -156,13 +162,13 @@ exports.deleteCook = async (req, res) => {
     }
     else
     {
-      res.status(400).json({
+      res.status(404).json({
         status: "failed",
         message: "no such cook"
       });
     }
   } catch (err) {
-    res.status(400).json({
+    res.status(404).json({
       status: "failed",
       message: err.message,
     });
