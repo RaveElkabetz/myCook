@@ -63,6 +63,57 @@ exports.getCookById = async (req, res) => {
   }
 };
 
+exports.getCookByUser = async (req, res) => {
+  try {
+    const cook = await Cook.findOne({email: req.body.email});
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        cook,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "failed",
+      message: err.message,
+    });
+  }
+};
+exports.getAllCooksByUser = async (req, res) => {
+  try {
+    const cook = await Cook.findMany({email: req.body.email});
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        cook,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "failed",
+      message: err.message,
+    });
+  }
+};
+exports.getCookByCategory = async (req, res) => {
+  try {
+    const cook = await Cook.findMany({category: req.body.cayrgory});
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        cook,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "failed",
+      message: err.message,
+    });
+  }
+};
 exports.updateCook = async (req, res) => {
   try {
     const data = await Cook.updateOne({cook_name : req.body.cook_name}, req.body);
