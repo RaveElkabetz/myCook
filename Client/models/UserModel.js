@@ -9,5 +9,4 @@ const User = mongoose.model(
     password: String
   })
 );
-
 module.exports = User;

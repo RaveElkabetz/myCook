@@ -20,14 +20,11 @@ const router = express.Router();
 
 router
   .route("/")
-  .get(usersController.getAllUsers)
-  .post(usersController.createUser);
+  .get(usersController.getAllUsers);
 router
   .route("/:id")
-  .get(usersController.getUserById)
-  .patch(usersController.updateUser)
   .delete(usersController.deleteUser, router);
-  
+
 }
 
 //module.exports = router;
