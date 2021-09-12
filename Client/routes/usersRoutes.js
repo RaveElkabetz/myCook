@@ -11,20 +11,15 @@ module.exports = function(app) {
     next();
   });
 
-  app.get("/api/test/all", usersController.allAccess);
+  app.get("/OurProject/test/FreeInfromation", usersController.allAccess);
   
-  app.get("/api/test/user", authJwt.verifyToken, usersController.userBoard);
+  app.get("/OurProject/test/UsersInformations", authJwt.verifyToken, usersController.userBoard);
 
 
 const router = express.Router();
 
 router
   .route("/")
-  .get(usersController.getAllUsers);
 router
   .route("/:id")
-  .delete(usersController.deleteUser, router);
-
 }
-
-//module.exports = router;
