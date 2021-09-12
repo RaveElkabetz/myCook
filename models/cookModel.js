@@ -10,8 +10,10 @@ const cookSchema = new mongoose.Schema({
     type: String,
     required: [true, "a full_recipe_desc must be provided"],
   },
+
   category: String,
   email: String
+
 });
 
 const Cook = mongoose.model("Cook", cookSchema);
