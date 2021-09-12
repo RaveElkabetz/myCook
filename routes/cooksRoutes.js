@@ -9,7 +9,7 @@ const router = express.Router();
 
 router
   .route("/") //the version is for branching out from the current version from the current version without braking v1 for others that use v1
-  .get(cooksController.getAllCooks)
+  .get(cooksController.getAllCooksByUser)
   .post(cooksController.createNewCook)
   .delete(cooksController.deleteCook)
   .patch(cooksController.updateCook);

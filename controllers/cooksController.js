@@ -65,6 +65,7 @@ exports.getCookById = async (req, res) => {
 
 exports.getCookByUser = async (req, res) => {
   try {
+
     const cook = await Cook.findOne({email: req.body.email});
 
     res.status(200).json({
@@ -82,7 +83,7 @@ exports.getCookByUser = async (req, res) => {
 };
 exports.getAllCooksByUser = async (req, res) => {
   try {
-    const cook = await Cook.findMany({email: req.body.email});
+    const cook = await Cook.find({email: req.body.email});
 
     res.status(200).json({
       status: "success",
