@@ -84,7 +84,7 @@ exports.getCookByUser = async (req, res) => {
 exports.getAllCooksByUser = async (req, res) => {
   try {
 
-    const user = await fetch("/api/test/user", {
+    const user = await fetch("/OurProject/test/UsersInformations", {
       method: 'get',
       headers: {'x-access-token': req.body.token}
     });
