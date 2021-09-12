@@ -106,7 +106,7 @@ exports.getAllCooksByUser = async (req, res) => {
 };
 exports.getCookByCategory = async (req, res) => {
   try {
-    const cook = await Cook.find({category: req.body.cayrgory});
+    const cook = await Cook.find({category: req.body.category});
 
     res.status(200).json({
       status: "success",
