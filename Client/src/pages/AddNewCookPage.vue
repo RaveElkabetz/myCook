@@ -16,27 +16,34 @@
         <ion-select-option value="6">סלטים</ion-select-option>
       </ion-select>
     </ion-item>
-    
-        
-    <ion-label>רשימת מצרכים</ion-label>
-  <ion-item>
-      <ion-input ionFocus="changeIsFocused()" placeholder="הוסף כאן מרכיב חדש:  " v-model="newIngredientToAdd" ></ion-input>
-            <ion-buttons>
-        <ion-button style="font-size: 30px;" color="success" v-on:click="addNewIngrClick" >+</ion-button>
-      </ion-buttons>
-      </ion-item>
-      <ion-item v-for="i in this.ingredientsArray" :key="i.id">
-      <ion-input >{{ i }}</ion-input>
 
-      
+    <ion-label>רשימת מצרכים</ion-label>
+    <ion-item>
+      <ion-input
+        ionFocus="changeIsFocused()"
+        placeholder="הוסף כאן מרכיב חדש:  "
+        v-model="newIngredientToAdd"
+      ></ion-input>
+      <ion-buttons>
+        <ion-button
+          style="font-size: 30px"
+          color="success"
+          v-on:click="addNewIngrClick"
+          >+</ion-button
+        >
+      </ion-buttons>
+    </ion-item>
+    <ion-item v-for="i in this.ingredientsArray" :key="i.id">
+      <ion-input>{{ i }}</ion-input>
+
       <ion-buttons>
         <!-- <ion-button color="success" v-if="this.ingredientsArray.length > 0" >+</ion-button> -->
-        <ion-button color="danger" v-if="this.ingredientsArray.length > 0" >x</ion-button>
+        <ion-button color="danger" v-if="this.ingredientsArray.length > 0"
+          >x</ion-button
+        >
       </ion-buttons>
-      </ion-item>
+    </ion-item>
 
- 
-    
     <ion-item>
       <ion-label position="stacked">תיאור המתכון</ion-label>
       <ion-textarea
@@ -45,9 +52,23 @@
         placeholder="אז איך מכינים את זה?"
       ></ion-textarea>
     </ion-item>
-    <ion-buttons>
-      <ion-button class="ion-text-center" v-on:click="checkInput" color="success">הוסף מתכון חדש</ion-button>
-    </ion-buttons>
+
+    <ion-item>
+      <ion-label position="floating" required="true"
+        >קישור לתמונה: (אופציונלי)
+      </ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <section>
+      <ion-button
+        style="font-size: 18px"
+        expand="block"
+        class="ion-text-center"
+        v-on:click="checkInput"
+        color="success"
+        >הוסף מתכון חדש</ion-button
+      >
+    </section>
   </base-layout>
 </template>
 <script>
@@ -72,31 +93,34 @@ export default {
     IonLabel,
     IonItem,
   },
-  data(){
-    return{
+  data() {
+    return {
       isFocused: false,
-      ingredientsArray:[],
-      newIngredientToAdd: ""
+      ingredientsArray: [],
+      newIngredientToAdd: "",
     };
   },
-  methods:{
-    addNewIngrClick(){
+  methods: {
+    addNewIngrClick() {
       // console.log(this.newIngredientToAdd);
-      if (this.newIngredientToAdd ==="") {
+      if (this.newIngredientToAdd === "") {
         return;
-        
       }
       this.ingredientsArray.push(this.newIngredientToAdd);
       this.newIngredientToAdd = "";
-
     },
-    checkInput(){
+    checkInput() {
       console.log("test!");
+      //if input good call postNewCook func
+      this.postNewCook();
     },
-    changeIsFocused(){
+    postNewCook() {
+      //here we will use fetch or axios
+    },
+    changeIsFocused() {
       this.isFocused = true;
       console.log(this.isFocused);
-    }
-  }
+    },
+  },
 };
 </script>

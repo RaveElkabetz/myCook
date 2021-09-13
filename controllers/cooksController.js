@@ -65,8 +65,7 @@ exports.getCookById = async (req, res) => {
 
 exports.getCookByUser = async (req, res) => {
   try {
-
-    const cook = await Cook.findOne({email: req.body.email});
+    const cook = await Cook.findOne({ email: req.body.email });
 
     res.status(200).json({
       status: "success",
@@ -83,13 +82,12 @@ exports.getCookByUser = async (req, res) => {
 };
 exports.getAllCooksByUser = async (req, res) => {
   try {
-
     const user = await fetch("/OurProject/test/UsersInformations", {
-      method: 'get',
-      headers: {'x-access-token': req.body.token}
+      method: "get",
+      headers: { "x-access-token": req.body.token },
     });
-    const useremail = user.email 
-    const cook = await Cook.find({email: useremail});
+    const useremail = user.email;
+    const cook = await Cook.find({ email: useremail });
 
     res.status(200).json({
       status: "success",
@@ -106,7 +104,7 @@ exports.getAllCooksByUser = async (req, res) => {
 };
 exports.getCookByCategory = async (req, res) => {
   try {
-    const cook = await Cook.find({category: req.body.category});
+    const cook = await Cook.find({ category: req.body.category });
 
     res.status(200).json({
       status: "success",
@@ -123,19 +121,19 @@ exports.getCookByCategory = async (req, res) => {
 };
 exports.updateCook = async (req, res) => {
   try {
-    const data = await Cook.updateOne({cook_name : req.body.cook_name}, req.body);
-    if (data.nModified != 0)
-    {
+    const data = await Cook.updateOne(
+      { cook_name: req.body.cook_name },
+      req.body
+    );
+    if (data.nModified != 0) {
       res.status(200).json({
         status: "success",
-        data: data
+        data: data,
       });
-    }
-    else 
-    {
+    } else {
       res.status(404).json({
         status: "failed",
-        message: "no such cook"
+        message: "no such cook",
       });
     }
   } catch (err) {
@@ -144,27 +142,24 @@ exports.updateCook = async (req, res) => {
       message: err.message,
     });
   }
-
-}
+};
 
 exports.deleteCook = async (req, res) => {
-
   try {
-    const deleteCook = await Cook.findOneAndDelete({cook_name : req.body.cook_name});
-    if (deleteCook != null)
-    {
+    const deleteCook = await Cook.findOneAndDelete({
+      cook_name: req.body.cook_name,
+    });
+    if (deleteCook != null) {
       res.status(200).json({
         status: "success",
         data: {
           cook: deleteCook,
         },
       });
-    }
-    else
-    {
+    } else {
       res.status(404).json({
         status: "failed",
-        message: "no such cook"
+        message: "no such cook",
       });
     }
   } catch (err) {
@@ -173,4 +168,4 @@ exports.deleteCook = async (req, res) => {
       message: err.message,
     });
   }
-}
+};

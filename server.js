@@ -1,8 +1,11 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const app = require("./app"); // replaced the order with dotenv if have any problems
+
 const bodyParser = require("body-parser");
 const cors = require("cors");
+
+
 
 dotenv.config({ path: "./config.env" });
 
@@ -31,6 +34,7 @@ mongoose
     console.log("db connected!");
   });
 
+
   app.get("/", (req, res) => {
     res.json({ message: "Welcome to our application." });
   });
@@ -38,6 +42,8 @@ mongoose
   // routes
  require("../myCook/routes/authRoutes")(app);
  require("../myCook/routes/usersRoutes")(app);
+
+
 
 //START THE SERVER
 const port = process.env.PORT || 3000;
