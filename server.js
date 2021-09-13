@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const db = require("./Client/models");
+const db = require("../myCook/models");
 
 
 mongoose
@@ -36,8 +36,8 @@ mongoose
   });
   
   // routes
- require("./Client/routes/authRoutes")(app);
- require("./Client/routes/usersRoutes")(app);
+ require("../myCook/routes/authRoutes")(app);
+ require("../myCook/routes/usersRoutes")(app);
 
 //START THE SERVER
 const port = process.env.PORT || 3000;

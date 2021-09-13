@@ -4,8 +4,8 @@ const morgan = require("morgan");
 
 const app = express();
 
-cooksRouter = require("./Client/routes/cooksRoutes");
-userRouter = require("./Client/routes/usersRoutes");
+cooksRouter = require("../myCook/routes/cooksRoutes");
+userRouter = require("../myCook/routes/usersRoutes");
 
 //MIDDLEWARES
 if (process.env.NODE_ENV === "development") {
