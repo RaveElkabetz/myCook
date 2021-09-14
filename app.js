@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 const express = require("express");
 const morgan = require("morgan");
+// const cors = require("cors");
 
 const app = express();
 
@@ -12,6 +13,7 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 app.use(express.json());
+// app.use(cors());
 
 // ROUTES
 //the version is for branching out from the current version from the current version without braking v1 for others that use v1

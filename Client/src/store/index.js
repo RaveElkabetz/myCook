@@ -69,6 +69,52 @@ const store = createStore({
       ],
     };
   },
+  mutations: {
+    addCook(state, cookData) {
+      const newCook = {
+        cookName: cookData.cookName,
+        fullRecipeDesc: cookData.fullRecipeDesc,
+        email: cookData.email,
+        category: cookData.category,
+        imageLink: cookData.imageLink,
+        ingredients: cookData.ingredients,
+      };
+      state.cooks.unshift(newCook);
+    },
+  },
+  actions: {
+    async addCook(context, cookData) {
+      //here i will post the new cook
+      debugger;
+      const response = await fetch("http://localhost:3000/api/v1/cooks", {
+        method: "POST",
+        body: JSON.stringify({
+          //username: payload.username,
+          cookName: cookData.cookName,
+          fullRecipeDesc: cookData.fullRecipeDesc,
+          email: cookData.email,
+          category: cookData.category,
+          imageLink: cookData.imageLink,
+          ingredients: [...cookData.ingredients],
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      const responseData = await response.json();
+      if (!response.ok) {
+        debugger;
+        console.log(responseData);
+        const error = new Error(
+          responseData.message || "not able to add new cookאת הLOG"
+        );
+        throw error;
+      }
+      console.log(responseData);
+      context.commit("addCook", cookData);
+    },
+  },
   getters: {
     categories(state) {
       return state.categories;

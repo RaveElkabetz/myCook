@@ -8,18 +8,16 @@ const cors = require("cors");
 dotenv.config({ path: "./config.env" });
 
 var corsOptions = {
-  origin: "http://localhost:3001",
+  origin: "http://localhost:8100/",
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
-
-//const db = require("../myCook/models");
 
 const DB = process.env.DATABASE.replace(
   "<PASSWORD>",

@@ -7,7 +7,7 @@ import UserAuth from "./../pages/auth/UserAuth.vue";
 const routes = [
   {
     path: "/",
-    redirect: "/categories",
+    redirect: "/auth",
   },
   {
     path: "/categories",

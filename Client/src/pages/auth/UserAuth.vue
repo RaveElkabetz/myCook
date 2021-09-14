@@ -23,11 +23,16 @@
               v-model="password"
             ></ion-input>
           </ion-item>
+          <ion-item v-if="mode === `signup`">
+            <ion-label position="floating">שם משתמש</ion-label>
+            <ion-input placeholder="" v-model="username"></ion-input>
+          </ion-item>
+
           <p v-if="!formIsValid">אנא הכנס שם משתמש וסיסמא תקנים</p>
         </ion-card-content>
       </ion-list>
       <section>
-        <ion-button expand="block" color="primary"
+        <ion-button expand="block" color="primary" @click="submitForm"
           >{{ submitButtonCaption }}
         </ion-button>
         <ion-button expand="block" color="secondary" @click="switchAuthMode">
@@ -43,6 +48,7 @@
 
 <script>
 import {
+  //IonLoading,
   IonCard,
   IonCardHeader,
   IonCardContent,
@@ -62,6 +68,7 @@ import {
 } from "@ionic/vue";
 export default {
   components: {
+    //IonLoading,
     IonCard,
     IonCardHeader,
     IonCardContent,
@@ -76,8 +83,11 @@ export default {
     return {
       email: "",
       password: "",
+      username: "",
       formIsValid: false,
       mode: "login",
+      isLoading: false,
+      error: null,
     };
   },
   computed: {
@@ -97,7 +107,9 @@ export default {
     },
   },
   methods: {
-    submitForm() {
+    async submitForm() {
+      //debugger;
+      console.log(this.username);
       this.formIsValid = true;
       if (
         this.email === "" ||
@@ -107,15 +119,28 @@ export default {
         this.formIsValid = false;
         return;
       }
-      //send http request
-      if (this.mode === "login") {
-        //..
-      } else {
-        this.$store.dispatch("signup", {
-          email: this.email,
-          password: this.password,
-        });
+      this.isLoading = true;
+      try {
+        if (this.mode === "login") {
+          await this.$store.dispatch("login", {
+            email: this.email,
+            password: this.password,
+          });
+          this.$router.push("/categories");
+        } else {
+          await this.$store.dispatch("signup", {
+            email: this.email,
+            password: this.password,
+            username: this.username,
+          });
+        }
+      } catch (err) {
+        this.error = err.message || "נכשל בהתחברות, נסה שוב מאוחר יותר";
       }
+
+      //send http request
+
+      this.isLoading = false;
     },
     switchAuthMode() {
       if (this.mode === "login") {

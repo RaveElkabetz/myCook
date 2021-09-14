@@ -1,5 +1,5 @@
 <template>
-  <ion-page dir="rtl">
+  <ion-page dir="rtl" v-if="this.$store.getters.isAuthenticated">
     <ion-header>
       <ion-toolbar dir="rtl">
         <ion-buttons slot="start">
@@ -20,10 +20,19 @@
       </ion-fab-button>
     </ion-fab>
   </ion-page>
+  <ion-page dir="rtl" v-else>
+    <ion-item>
+      <ion-label>אנא התחבר מחדש!</ion-label>
+      <ion-button dir="rtl" :router-link="'/auth'">לעמוד ההתחברות</ion-button>
+    </ion-item>
+  </ion-page>
 </template>
 
 <script>
 import {
+  IonButton,
+  IonItem,
+  IonLabel,
   IonFabButton,
   IonFab,
   IonIcon,
@@ -41,6 +50,9 @@ import { add } from "ionicons/icons";
 export default {
   props: ["pageTitle", "PageDefaultBackLink"],
   components: {
+    IonButton,
+    IonItem,
+    IonLabel,
     IonFabButton,
     IonIcon,
     IonFab,
