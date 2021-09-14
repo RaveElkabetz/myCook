@@ -5,12 +5,10 @@ const app = require("./app"); // replaced the order with dotenv if have any prob
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-
-
 dotenv.config({ path: "./config.env" });
 
 var corsOptions = {
-  origin: "http://localhost:3001"
+  origin: "http://localhost:3001",
 };
 
 app.use(cors(corsOptions));
@@ -21,11 +19,15 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const db = require("../myCook/models");
+//const db = require("../myCook/models");
 
+const DB = process.env.DATABASE.replace(
+  "<PASSWORD>",
+  process.env.DATABASE_PASSWORD
+);
 
 mongoose
-  .connect('mongodb://localhost:=27017/Users', {
+  .connect(DB, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
@@ -34,16 +36,13 @@ mongoose
     console.log("db connected!");
   });
 
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to our application." });
+});
 
-  app.get("/", (req, res) => {
-    res.json({ message: "Welcome to our application." });
-  });
-  
-  // routes
- require("../myCook/routes/authRoutes")(app);
- require("../myCook/routes/usersRoutes")(app);
-
-
+// routes
+require("../myCook/routes/authRoutes")(app);
+require("../myCook/routes/usersRoutes")(app);
 
 //START THE SERVER
 const port = process.env.PORT || 3000;
