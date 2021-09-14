@@ -30,12 +30,7 @@
         <ion-button expand="block" color="primary"
           >{{ submitButtonCaption }}
         </ion-button>
-        <ion-button
-          mode="flat"
-          expand="block"
-          color="secondary"
-          @click="switchAuthMode"
-        >
+        <ion-button expand="block" color="secondary" @click="switchAuthMode">
           {{ switchModeButtonCaption }}
         </ion-button>
       </section>
