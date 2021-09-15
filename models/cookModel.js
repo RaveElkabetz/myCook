@@ -3,7 +3,7 @@ const cookSchema = new mongoose.Schema({
   cookName: {
     type: String,
     required: [true, "A cook name must be provided"],
-    unique: true,
+    unique: false,
   },
   ingredients: [
     {
@@ -12,7 +12,7 @@ const cookSchema = new mongoose.Schema({
   ],
   fullRecipeDesc: {
     type: String,
-    required: [true, "a fullRecipeDesc must be provided"],
+    required: [false, "a fullRecipeDesc must be provided"],
   },
   imageLink: {
     type: String,

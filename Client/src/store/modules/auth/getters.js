@@ -8,7 +8,11 @@ export default {
   token(state) {
     return state.token;
   },
-  isAuthenticated(state) {
-    return !!state.token;
+  isAuthenticated() {
+    if (localStorage.getItem("token")) {
+      return true;
+    }
+    return false;
+    //return !!state.token;
   },
 };

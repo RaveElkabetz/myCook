@@ -91,16 +91,46 @@ const store = createStore({
         body: JSON.stringify({
           //username: payload.username,
           cookName: cookData.cookName,
-          fullRecipeDesc: cookData.fullRecipeDesc,
-          email: cookData.email,
-          category: cookData.category,
-          imageLink: cookData.imageLink,
           ingredients: [...cookData.ingredients],
+          fullRecipeDesc: cookData.fullRecipeDesc,
+          imageLink: cookData.imageLink,
+          category: cookData.category,
+          email: cookData.email,
         }),
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
+
+        // cookName: {
+        //   type: String,
+        //   required: [true, "A cook name must be provided"],
+        //   unique: true,
+        // },
+        // ingredients: [
+        //   {
+        //     type: String,
+        //   },
+        // ],
+        // fullRecipeDesc: {
+        //   type: String,
+        //   required: [true, "a fullRecipeDesc must be provided"],
+        // },
+        // imageLink: {
+        //   type: String,
+        //   default:
+        //     "https://d3o5sihylz93ps.cloudfront.net/wp-content/uploads/2020/03/04123229/%D7%AA%D7%91%D7%A9%D7%99%D7%9C-Small.jpg",
+        // },
+
+        // category: {
+        //   type: String,
+        //   required: [true, "A recipe category must be provided"],
+        // },
+        // email: {
+        //   type: String,
+        //   required: [true, "a recipe creator email must be provided"],
+        //   unique: true,
+        // },
       });
       const responseData = await response.json();
       if (!response.ok) {
