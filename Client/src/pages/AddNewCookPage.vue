@@ -119,7 +119,7 @@ export default {
   },
   computed: {
     userEmail() {
-      return this.$store.getters.userEmail;
+      return localStorage.getItem("email");
     },
   },
   methods: {

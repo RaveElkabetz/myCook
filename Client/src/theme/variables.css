@@ -69,7 +69,7 @@ http://ionicframework.com/docs/theming/ */
   --ion-toolbar-color: var(--ion-color-primary-contrast);
 }
 
-@media (prefers-color-scheme: Dark) {
+@media (prefers-color-scheme: light) {
   /*
    * Dark Colors
    * -------------------------------------------
