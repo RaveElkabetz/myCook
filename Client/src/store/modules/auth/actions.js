@@ -16,7 +16,7 @@ export default {
 
     const responseData = await response.json();
     if (!response.ok) {
-      debugger;
+      //debugger;
       console.log(responseData);
       const error = new Error(
         responseData.message || "נכשל בהתחברות בדוק את הLOG"
@@ -49,7 +49,7 @@ export default {
     });
     const responseData = await response.json();
     if (!response.ok) {
-      debugger;
+      //debugger;
       console.log(responseData);
       const error = new Error(
         responseData.message || "נכשל בהתחברות בדוק את הLOG"

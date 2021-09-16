@@ -27,7 +27,7 @@ const cookSchema = new mongoose.Schema({
   email: {
     type: String,
     required: [true, "a recipe creator email must be provided"],
-    unique: true,
+    unique: false,
   },
 });
 

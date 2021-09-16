@@ -1,7 +1,7 @@
 export default {
   setUser(state, payload) {
     state.token = payload.token;
-    debugger;
+    //debugger;
     localStorage.setItem("token", payload.token);
     localStorage.setItem("email", payload.userEmail);
     console.log("this is payload:");

@@ -53,7 +53,7 @@ export default {
   },
   computed: {
     cook() {
-      //debugger;
+      debugger;
       console.log("logging the ingredients");
       console.log(this.$store.getters.cook(this.cookId.trim()).ingredients);
       return this.$store.getters.cook(this.cookId.trim());

@@ -139,7 +139,8 @@ const store = createStore({
         const error = new Error(
           responseData.message || "not able to add new cookאת הLOG"
         );
-        throw error;
+        console.log(error);
+        //throw error;
       }
       console.log(responseData);
       context.commit("addCook", cookData);
