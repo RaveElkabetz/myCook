@@ -85,7 +85,7 @@ const store = createStore({
   actions: {
     async addCook(context, cookData) {
       //here i will post the new cook
-      debugger;
+      //debugger;
       const response = await fetch("http://localhost:3000/api/v1/cooks", {
         method: "POST",
         body: JSON.stringify({
@@ -181,6 +181,7 @@ const store = createStore({
       return (categoryId) => {
         console.log("enterd getter of cook by category");
         console.log(categoryId);
+
         //debugger;
         var cooksByCategoryRet = [];
         for (let i = 0; i < state.cooks.length; i++) {

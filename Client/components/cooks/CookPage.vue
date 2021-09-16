@@ -51,12 +51,39 @@ export default {
       cookId: this.$route.params.id,
     };
   },
+  methods: {
+    init() {
+      //debugger;
+      fetch("http://localhost:3000/api/v1/cooks")
+        .then((response) => {
+          //debugger;
+          if (response.ok) {
+            return response.json();
+          }
+        })
+        .then((data) => {
+          //console.log(data.data.cooks);
+
+          this.cooksArray = [...data.data.cooks];
+        });
+
+      //debugger;
+
+      for (let index = 0; index < this.cooksArray.length; index++) {
+        const cook = this.cooksArray[index];
+        if (cook.id === this.cookId) {
+          return cook;
+        }
+      }
+    },
+  },
   computed: {
     cook() {
-      debugger;
-      console.log("logging the ingredients");
-      console.log(this.$store.getters.cook(this.cookId.trim()).ingredients);
-      return this.$store.getters.cook(this.cookId.trim());
+      //debugger;
+      return this.init();
+      //console.log("logging the ingredients");
+      //console.log(this.$store.getters.cook(this.cookId.trim()).ingredients);
+      //return this.$store.getters.cook(this.cookId.trim());
     },
   },
 };

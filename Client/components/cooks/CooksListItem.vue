@@ -1,5 +1,5 @@
 <template>
-  <ion-item dir="rtl" :router-link="`/cookPage/ ${cook.id}`">
+  <ion-item dir="rtl" :router-link="`/cookPage/ ${cook.cookName}`">
     <ion-thumbnail slot="start">
       <ion-img :src="cook.imageLink" :alt="cook.cookName"></ion-img>
     </ion-thumbnail>
