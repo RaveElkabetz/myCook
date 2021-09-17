@@ -33,7 +33,19 @@ export default {
         .then((data) => {
           //console.log(data.data.cooks);
 
-          this.cooksArray = [...data.data.cooks];
+          var tempArr = [...data.data.cooks];
+          for (let index = 0; index < tempArr.length; index++) {
+            // const cook = tempArr[index];
+            debugger;
+
+            //this.oneCook = this.cooksArray[index];
+            //this.changedFlag = true;
+            //this.Cookt = tempArr[index];
+            if (tempArr[index].category.trim() === this.categoryId.trim()) {
+              this.cooksArray.push(tempArr[index]);
+            }
+          }
+          //return this.cooksArray;
         });
 
       //debugger;
