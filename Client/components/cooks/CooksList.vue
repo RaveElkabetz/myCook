@@ -43,8 +43,8 @@ export default {
 
   computed: {
     cook() {
-      //return this.init();
-      return this.$store.getters.cooksByCategory(this.categoryId);
+      return this.init();
+      //return this.$store.getters.cooksByCategory(this.categoryId);
     },
   },
 };
